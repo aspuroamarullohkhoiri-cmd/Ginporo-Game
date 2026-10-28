@@ -118,6 +118,28 @@ h1{font-family:"Dancing Script","Brush Script MT",cursive;font-size:clamp(2.4rem
 .trk{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .sq{aspect-ratio:1;border-radius:12px;background:var(--glass);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.95rem}
 .sq small{font-size:.65rem;color:var(--mut)}.sq b{font-size:1.2rem;min-height:1.2em}
+.btn:disabled{opacity:.35;cursor:default}
+.ub{position:relative;width:100%;max-width:440px;margin:0 auto 40px}
+.ug{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));grid-template-rows:repeat(10,minmax(0,1fr));gap:2px;aspect-ratio:1;width:100%;box-sizing:border-box;border-radius:18px;overflow:hidden;background:var(--glass);border:1px solid var(--gb);box-shadow:0 14px 30px -16px var(--sh)}
+.uc{display:flex;align-items:flex-start;padding:2px 3px;border-radius:6px;font-size:clamp(.5rem,2.3vw,.7rem);font-weight:700;color:var(--mut);background:rgba(255,255,255,.18);min-width:0;overflow:hidden}
+.uc.a{background:rgba(255,150,185,.25)}
+.us{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.tk{position:absolute;z-index:3;width:7.2%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-size:clamp(.65rem,3.4vw,1rem);transform:translate(-50%,-50%);transition:left .22s,top .22s;background:var(--card);border:2px solid var(--c);box-shadow:0 4px 10px -3px var(--sh)}
+.tk.jp{transition:left .7s ease-in-out,top .7s ease-in-out}
+.dg{display:grid;grid-template-columns:repeat(4,22px minmax(0,1fr)) 22px;grid-template-rows:repeat(4,22px minmax(0,1fr)) 22px;width:100%;max-width:360px;aspect-ratio:1;margin:auto}
+.dd{place-self:center;width:14px;height:14px;border-radius:50%;background:var(--tx);opacity:.75}
+.ed{position:relative;width:100%;height:100%;border:0;background:transparent;padding:0;cursor:pointer;min-width:0;min-height:0}
+.ed::after{content:'';position:absolute;border-radius:6px;background:var(--ec,var(--bd));transition:background .15s}
+.ed.h::after{inset:7px 2px}.ed.v::after{inset:2px 7px}
+.ed:not(.on):hover::after{background:var(--ac)}
+.ed.on{cursor:default}
+.bx{display:grid;place-items:center;border-radius:10px;font-size:clamp(1rem,6vw,1.7rem);min-width:0}
+.bx.o0{background:rgba(225,29,106,.22)}.bx.o1{background:rgba(124,58,237,.22)}
+.ky{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:12px}
+.ky .btn{padding:8px 0;width:calc((100% - 30px)/7);font-size:1rem}
+.nb{padding:14px 0;font-size:1.2rem;border-radius:16px;min-width:0}
+.sw{aspect-ratio:1;border-radius:50%;border:3px solid var(--gb);cursor:pointer;box-shadow:0 8px 16px -8px rgba(0,0,0,.5);padding:0}
+.sw:active{transform:scale(.92)}
 </style></head><body><div id="hs" aria-hidden="true"></div><div id="md" hidden></div><div id="fab"><button id="b1" title="Bagikan gambar">📸</button><button id="b2" title="Suara">🔊</button></div><div class="w">
 <h1>💕 Game Berdua</h1><p class="sub">Satu layar, dua hati, banyak keseruan 💞</p>
 <div class="pl"><input id="n0" placeholder="💗 Nama kamu" maxlength="14" oninput="upd()"><input id="n1" placeholder="💜 Nama pasangan" maxlength="14" oninput="upd()"></div>
@@ -391,7 +413,104 @@ function dr(b){
  const go=()=>{act();let n=0;iv=setInterval(()=>{d1.innerHTML=`<p>${R(A)}</p>`;d2.innerHTML=`<p>${R(B)}</p>`;snd([300+n*40],.05);if(++n<12)return;clearInterval(iv);burst(innerWidth/2,innerHeight/2,30,['✨','💗','😂']);st(`${N(t)}, lakukan untuk ${N(1-t)}!`,t);t=1-t;act('Lempar lagi 🎲',go)},90)};
  st('Lempar dadu: aksi manis + gaya lucu!');act('Lempar dadu 🎲',go)}
 
-const G={xo:['❌⭕','XO','3 sebaris menang',xo],c4:['🔴🔵','Empat Sebaris','Jatuhkan koin, susun 4',c4],mem:['🧠','Cocokkan Kartu','Ingat posisi gambar',mem],rx:['⚡','Duel Refleks','Siapa paling cepat tap?',rx],rps:['✊✋✌️','Suit','Batu, Kertas, Gunting',rps],qa:['💌','Kartu Pasangan','Obrolan dan tantangan manis',qa],g5:['♟️','Lima Sebaris','Papan 9×9, susun 5',g5],tn:['🔢','Tebak Angka','Angka rahasia 1–100',tn],tp:['👆','Adu Tap','Tap sebanyak mungkin 10 detik',tp],pig:['🎲','Dadu Berani','Kejar 50, hindari angka 1',pig],bm:['💣','Bom Waktu','Oper sebelum meledak',bm],kn:['💞','Seberapa Kenal?','Tebak hal tentang pasangan',kn],wl:['🎡','Roda Nasib','Hadiah dan tantangan acak',wl],kz:['🧩','Kuis Kilat','Pengetahuan umum',kz],bl:['🎈','Balon Pecah','Pecahkan balon di sisimu',bl],pg:['🏓','Pong Cinta','Pantulkan bola, duluan 5',pg],tw:['🪢','Tarik Tambang','Tap cepat, tarik hati ke sisimu',tw],cn:['🪙','Lempar Koin','Undian untung-untungan',cn],rc:['🛤️','Balapan Cinta','Lempar dadu, capai kotak 30',rc],mm:['🎭','Mimik Lucu','Peragakan, pasangan menebak',mm],pm:['⚖️','Pilih Mana?','Tes kekompakan kalian',pm],sl:['👉','Siapa Lebih Mungkin?','Tunjuk bareng, ketawa bareng',sl],lm:['🫶','Love Meter','Tempel jari, ukur chemistry',lm],gb:['💘','Gombal Maut','Gombalan receh bikin ketawa',gb],dr:['🎲','Dadu Romantis','Aksi manis + gaya lucu',dr]};
+function ut(b){
+ const J={4:14,9:31,20:38,28:84,40:59,51:67,63:81,71:91,17:7,54:34,62:19,64:60,87:24,93:73,95:75,99:78},
+ F='⚀⚁⚂⚃⚄⚅',K=['#16a34a','#f97316','#a855f7','#0ea5e9','#ef4444','#14b8a6','#eab308','#ec4899'],f=v=>v.toFixed(1),
+ xy=n=>{const i=n-1,r=Math.floor(i/10),c=r%2?9-i%10:i%10;return[(c+.5)*10,(9-r+.5)*10]};
+ let pos=[0,0],t=0,busy=0,dv=0,iv,tm,si=0,sv='',cells='';b.className='';
+ for(let r=9;r>=0;r--)for(let c=0;c<10;c++){const n=r*10+(r%2?10-c:c+1);cells+=`<div class="uc${(r+c)%2?' a':''}">${n==100?'🏁':n}</div>`}
+ for(const k in J){const a=+k,z=J[k],[x1,y1]=xy(a),[x2,y2]=xy(z),dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),nx=-dy/L,ny=dx/L;
+  if(z>a){const n=Math.max(2,Math.round(L/5)),o=1.4;
+   sv+=`<g stroke="#b7791f" stroke-linecap="round" opacity=".9"><line x1="${f(x1+nx*o)}" y1="${f(y1+ny*o)}" x2="${f(x2+nx*o)}" y2="${f(y2+ny*o)}" stroke-width=".8"/><line x1="${f(x1-nx*o)}" y1="${f(y1-ny*o)}" x2="${f(x2-nx*o)}" y2="${f(y2-ny*o)}" stroke-width=".8"/>`;
+   for(let i=1;i<n;i++){const q=i/n,px=x1+dx*q,py=y1+dy*q;sv+=`<line x1="${f(px+nx*o)}" y1="${f(py+ny*o)}" x2="${f(px-nx*o)}" y2="${f(py-ny*o)}" stroke-width=".6"/>`}
+   sv+='</g>'}
+  else{const c=K[si++%K.length];let d='';
+   for(let i=0;i<=30;i++){const q=i/30,w=Math.sin(q*Math.PI*4)*2.2*Math.min(1,q*6);d+=(i?'L':'M')+f(x1+dx*q+nx*w)+' '+f(y1+dy*q+ny*w)}
+   sv+=`<path d="${d}" fill="none" stroke="${c}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/><circle cx="${f(x1)}" cy="${f(y1)}" r="2" fill="${c}"/><circle cx="${f(x1+nx*.8)}" cy="${f(y1+ny*.8)}" r=".45" fill="#fff"/><circle cx="${f(x1-nx*.8)}" cy="${f(y1-ny*.8)}" r=".45" fill="#fff"/>`}}
+ const ub=E('div','ub',`<div class="ug">${cells}</div><svg class="us" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${sv}</svg>`),
+ tk=[0,1].map(i=>{const e=E('div','tk',i?'💜':'💗');e.style.setProperty('--c',`var(--p${i+1})`);ub.append(e);return e}),
+ dice=E('div','big','🎲');dice.style.fontSize='3rem';b.append(ub,dice);
+ const place=i=>{const p=pos[i],[x,y]=p?xy(p):[5+i*9,106],o=p?(i?2:-2):0;tk[i].style.left=(x+o)+'%';tk[i].style.top=(y+o)+'%'},
+ fin=m=>{const i=t;
+  if(pos[i]==100){st(N(i)+' sampai finis! 🏆',i);win(i);busy=0;act('Main lagi',run);return}
+  const again=dv==6;if(!again)t=1-t;busy=0;
+  st((m?m+' ':'')+(again?`${N(i)} dapat 6, lempar lagi! 🎉`:'Giliran '+N(t)),t);act('Lempar dadu 🎲',go)},
+ land=()=>{const i=t,j=J[pos[i]];if(!j){fin('');return}
+  const up=j>pos[i],m=up?`🪜 ${N(i)} naik tangga ke ${j}!`:`🐍 ${N(i)} digigit ular, turun ke ${j}!`;
+  tk[i].classList.add('jp');pos[i]=j;place(i);snd(up?[523,659,880]:[440,330,220],.1);if(up)burst(innerWidth/2,innerHeight/2,16,['✨','💗']);
+  tm=setTimeout(()=>{tk[i].classList.remove('jp');fin(m)},800)},
+ move=d=>{const i=t,f0=pos[i];dv=d;
+  if(f0+d>100){tm=setTimeout(()=>fin(`${N(i)} butuh angka pas ke 100, tetap di ${f0} 😅`),500);return}
+  let s=0;const step=()=>{s++;pos[i]=f0+s;place(i);tm=setTimeout(s<d?step:land,s<d?230:330)};step()},
+ go=()=>{if(busy)return;busy=1;act();let n=0;iv=setInterval(()=>{dice.textContent=F[Math.floor(Math.random()*6)];if(++n<9)return;clearInterval(iv);const d=1+Math.floor(Math.random()*6);dice.textContent=F[d-1];move(d)},80)};
+ stop=()=>{clearInterval(iv);clearTimeout(tm)};place(0);place(1);
+ st(`Giliran ${N(0)} · 🪜 naik, 🐍 turun, dapat 6 = lempar lagi`,0);act('Lempar dadu 🎲',go)}
+
+function kt(b){
+ const H=Array.from({length:5},()=>Array(4).fill(0)),V=Array.from({length:4},()=>Array(5).fill(0)),O=Array.from({length:4},()=>Array(4).fill(-1)),bx=Array.from({length:4},()=>[]);
+ let t=0,p=[0,0],left=16,over=0;b.className='';
+ const g=E('div','dg'),info=m=>st(`Giliran ${N(t)} · ${p[0]}–${p[1]}${m||''}`,t);
+ const take=(h,r,c,e)=>{if(over||(h?H:V)[r][c])return;(h?H:V)[r][c]=1;e.classList.add('on');e.style.setProperty('--ec',`var(--p${t+1})`);
+  let n=0;(h?[[r-1,c],[r,c]]:[[r,c-1],[r,c]]).forEach(([y,x])=>{if(y<0||x<0||y>3||x>3||O[y][x]>=0)return;
+   if(H[y][x]&&H[y+1][x]&&V[y][x]&&V[y][x+1]){O[y][x]=t;n++;bx[y][x].classList.add('o'+t);bx[y][x].textContent=t?'💜':'💗'}});
+  if(n){p[t]+=n;left-=n;snd([660,880],.08)}
+  if(!left){over=1;res(p);return}
+  if(!n)t=1-t;info(n?` · +${n} kotak, giliran lagi! 🎉`:'')};
+ for(let y=0;y<9;y++)for(let x=0;x<9;x++){
+  if(y%2==0&&x%2==0){g.append(E('div','dd'));continue}
+  if(y%2==1&&x%2==1){const e=E('div','bx');bx[(y-1)/2][(x-1)/2]=e;g.append(e);continue}
+  const h=y%2==0,r=h?y/2:(y-1)/2,c=h?(x-1)/2:x/2,e=E('button','ed '+(h?'h':'v'));e.setAttribute('aria-label','garis');e.onclick=()=>take(h,r,c,e);g.append(e)}
+ b.append(g);info()}
+
+function nm(b){
+ let n=17+Math.floor(Math.random()*9),t=0;b.className='';
+ const bx=E('div','q'),r=E('div');r.style.cssText='display:flex;gap:8px;justify-content:center;margin-top:14px';b.append(bx,r);
+ const draw=()=>{bx.innerHTML=`<small>Sisa ${n} permen · yang ambil permen terakhir KALAH!</small><p style="font-size:1.6rem;line-height:1.5;word-break:break-all;margin:8px 0 0">${'🍬'.repeat(n)}</p>`;st(`Giliran ${N(t)} · ambil 1–3`,t);r.innerHTML='';
+  [1,2,3].forEach(k=>{const e=E('button','btn','Ambil '+k);e.disabled=k>n;e.onclick=()=>take(k);r.append(e)})},
+ take=k=>{n-=k;if(n>0){t=1-t;draw();return}const w=1-t;bx.innerHTML=`<small>Permen habis!</small><p>${esc(N(t))} mengambil permen terakhir 🍬</p>`;r.innerHTML='';st(`${N(w)} menang! 🎉`,w);win(w);act('Main lagi',run)};
+ draw()}
+
+function hg(b){
+ let r=0,p=[0,0],w='',g,bad=0;const M=7,L='ABCDEFGHIJKLMNOPQRSTUVWXYZ';b.className='';
+ const setup=()=>{const s=r;b.innerHTML=`<div class="q" style="min-height:0;margin-bottom:10px"><small>Ronde ${r+1}/2</small><p>${esc(N(s))}, ketik kata rahasia (3–12 huruf). ${esc(N(1-s))}, jangan mengintip 🙈</p></div>`;
+  const i=E('input');i.type='password';i.maxLength=12;i.autocomplete='off';i.autocapitalize='characters';i.spellcheck=false;i.style.cssText='width:100%;box-sizing:border-box;padding:14px;font-size:1.5rem;text-align:center;border-radius:999px;border:2px solid var(--bd);background:var(--glass);color:var(--tx);letter-spacing:4px';
+  const go=()=>{const v=i.value.trim().toUpperCase();if(!/^[A-Z]{3,12}$/.test(v)){st('Pakai 3–12 huruf A–Z tanpa spasi',s);return}w=v;play()};
+  i.onkeydown=e=>{if(e.key=='Enter')go()};b.append(i);st(`${N(s)} menyiapkan kata`,s);act('Kunci kata 🔒',go)},
+ play=()=>{const s=r,gs=1-r;g=new Set();bad=0;b.innerHTML='';
+  const hd=E('div','q'),ky=E('div','ky');hd.style.minHeight='0';b.append(hd,ky);
+  const show=()=>{hd.innerHTML=`<small>Ronde ${s+1}/2 · ${esc(N(gs))} menebak kata buatan ${esc(N(s))}</small><p style="font-size:2rem;letter-spacing:3px;margin:8px 0">${[...w].map(c=>g.has(c)?c:'_').join(' ')}</p><div>${'❤️'.repeat(M-bad)}${'🖤'.repeat(bad)}</div>`},
+  end=ok=>{ky.querySelectorAll('button').forEach(x=>x.disabled=true);[...w].forEach(c=>g.add(c));show();const wn=ok?gs:s;p[wn]++;
+   st(ok?`${N(gs)} berhasil menebak! 🎉`:`Gagal! Poin untuk ${N(s)} 😈`,wn);if(s==0){r=1;act('Ronde berikutnya',setup)}else res(p)};
+  [...L].forEach(c=>{const e=E('button','btn l',c);e.onclick=()=>{g.add(c);e.disabled=true;if(w.includes(c)){e.style.background='#22c55e';e.style.color='#fff'}else{bad++;e.style.opacity=.4}show();if([...w].every(x=>g.has(x)))end(1);else if(bad>=M)end(0)};ky.append(e)});
+  show();st(`Giliran ${N(gs)} menebak`,gs);act()};
+ setup()}
+
+function ca(b){
+ let nx=[1,1],s=0,iv;const T=12;b.className='gp';
+ const bs=[[],[]],info=()=>st(`${N(0)} ${nx[0]-1}/${T} · ${nx[1]-1}/${T} ${N(1)}`),
+ hit=(i,v,e)=>{if(s!=1)return;
+  if(v==nx[i]){nx[i]++;e.disabled=true;e.style.background=`var(--p${i+1})`;e.style.color='#fff';info();if(nx[i]>T){s=2;st(`${N(i)} selesai duluan! 🏆`,i);win(i);act('Main lagi',run)}}
+  else{e.style.background='#ef4444';e.style.color='#fff';setTimeout(()=>{if(!e.disabled){e.style.background='';e.style.color=''}},250)}},
+ go=()=>{nx=[1,1];s=0;act();bs.flat().forEach(e=>{e.disabled=false;e.textContent='?';e.style.background='';e.style.color=''});let c=3;st('Siap… 3');
+  iv=setInterval(()=>{c--;if(c>0){st('Siap… '+c);return}clearInterval(iv);bs.flat().forEach(e=>e.textContent=e.dataset.v);s=1;info()},1000)};
+ [0,1].forEach(i=>{const col=E('div','',`<div style="text-align:center;font-weight:700;color:var(--p${i+1});margin-bottom:6px">${esc(N(i))}</div>`),g=E('div');g.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:6px';
+  sh(Array.from({length:T},(_,k)=>k+1)).forEach(v=>{const e=E('button','btn l nb','?');e.dataset.v=v;e.onpointerdown=ev=>{ev.preventDefault();hit(i,v,e)};g.append(e);bs[i].push(e)});col.append(g);b.append(col)});
+ stop=()=>clearInterval(iv);st(`Urutkan angka 1–${T} di sisimu, secepat mungkin!`);act('Mulai',go)}
+
+function wk(b){
+ const C=[['MERAH','#ef4444'],['BIRU','#3b82f6'],['HIJAU','#22c55e'],['KUNING','#eab308']];let p=[0,0],s=0,ink=0,tm;b.className='';
+ const wd=E('div','big','🌈'),row=E('div','gp');b.append(wd,row);
+ const info=()=>st(`${N(0)} ${p[0]} – ${p[1]} ${N(1)} · duluan 5`),
+ nxt=()=>{const a=Math.floor(Math.random()*4);let k;do{k=Math.floor(Math.random()*4)}while(k==a);ink=k;wd.textContent=C[a][0];wd.style.color=C[k][1];s=1;info()},
+ hit=(i,j)=>{if(s!=1)return;s=2;const ok=j==ink,w=ok?i:1-i;p[w]++;wd.textContent=ok?'✅':'❌';wd.style.color='';
+  if(p[w]==5){st(`${N(w)} juara! 🏆 ${p[0]}–${p[1]}`,w);win(w);act('Main lagi',run);return}
+  st(`${N(i)} ${ok?'benar':'salah'}! Poin ${N(w)} · ${p[0]}–${p[1]}`,w);tm=setTimeout(nxt,900)},
+ go=()=>{act();info();wd.textContent='Siap…';tm=setTimeout(nxt,900)};
+ [0,1].forEach(i=>{const col=E('div','',`<div style="text-align:center;font-weight:700;color:var(--p${i+1});margin-bottom:6px">${esc(N(i))}</div>`),d=E('div');d.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:10px';
+  C.forEach(([,k],j)=>{const e=E('button','sw');e.style.background=k;e.setAttribute('aria-label','warna '+(j+1));e.onpointerdown=ev=>{ev.preventDefault();hit(i,j)};d.append(e)});col.append(d);row.append(col)});
+ stop=()=>clearTimeout(tm);st('Tap WARNA tulisannya, bukan artinya! Duluan 5 poin.');act('Mulai',go)}
+
+const G={xo:['❌⭕','XO','3 sebaris menang',xo],c4:['🔴🔵','Empat Sebaris','Jatuhkan koin, susun 4',c4],mem:['🧠','Cocokkan Kartu','Ingat posisi gambar',mem],rx:['⚡','Duel Refleks','Siapa paling cepat tap?',rx],rps:['✊✋✌️','Suit','Batu, Kertas, Gunting',rps],qa:['💌','Kartu Pasangan','Obrolan dan tantangan manis',qa],g5:['♟️','Lima Sebaris','Papan 9×9, susun 5',g5],tn:['🔢','Tebak Angka','Angka rahasia 1–100',tn],tp:['👆','Adu Tap','Tap sebanyak mungkin 10 detik',tp],pig:['🎲','Dadu Berani','Kejar 50, hindari angka 1',pig],bm:['💣','Bom Waktu','Oper sebelum meledak',bm],kn:['💞','Seberapa Kenal?','Tebak hal tentang pasangan',kn],wl:['🎡','Roda Nasib','Hadiah dan tantangan acak',wl],kz:['🧩','Kuis Kilat','Pengetahuan umum',kz],bl:['🎈','Balon Pecah','Pecahkan balon di sisimu',bl],pg:['🏓','Pong Cinta','Pantulkan bola, duluan 5',pg],tw:['🪢','Tarik Tambang','Tap cepat, tarik hati ke sisimu',tw],cn:['🪙','Lempar Koin','Undian untung-untungan',cn],rc:['🛤️','Balapan Cinta','Lempar dadu, capai kotak 30',rc],mm:['🎭','Mimik Lucu','Peragakan, pasangan menebak',mm],pm:['⚖️','Pilih Mana?','Tes kekompakan kalian',pm],sl:['👉','Siapa Lebih Mungkin?','Tunjuk bareng, ketawa bareng',sl],lm:['🫶','Love Meter','Tempel jari, ukur chemistry',lm],gb:['💘','Gombal Maut','Gombalan receh bikin ketawa',gb],dr:['🎲','Dadu Romantis','Aksi manis + gaya lucu',dr],ut:['🐍','Ular Tangga','Lempar dadu, naik tangga, hindari ular',ut],kt:['🔲','Kotak Titik','Hubungkan titik, rebut kotak',kt],nm:['🍬','Ambil Permen','Jangan ambil permen terakhir!',nm],hg:['🔤','Tebak Kata','Satu bikin kata, satu menebak',hg],ca:['🔢','Urut Angka','Siapa paling cepat urut 1–12?',ca],wk:['🌈','Warna Kata','Tap warna tulisan, bukan artinya',wk]};
 const run=()=>{if(stop){stop();stop=null}const b=$('#board');b.innerHTML='';b.className='';act();G[cur][3](b)};
 for(const k in G){const[e,t,d]=G[k],m=E('button','m',`<b>${e}</b><span>${t}</span><small>${d}</small>`);m.onclick=()=>{cur=k;$('#menu').hidden=1;$('#game').hidden=0;$('#gt').textContent=t;run()};$('#menu').append(m)}
 $('#back').onclick=()=>{if(stop){stop();stop=null}$('#menu').hidden=0;$('#game').hidden=1;st('')};
